@@ -1,0 +1,39 @@
+{
+  "advertisment": [
+    {
+      "id": 1,
+      "title": "Redmi note 9 pro max",
+      "name": "Vishal",
+      "category": "Mobile",
+      "description": "Have very nice features"
+    },
+    {
+      "id": 3,
+      "title": "Bed",
+      "name": "Vishal",
+      "category": "Furniture",
+      "description": "King Size"
+    },
+    {
+      "id": 5,
+      "title": "Sofa",
+      "name": "Sayali",
+      "category": "Furniture",
+      "description": "Buy"
+    },
+    {
+      "id": 6,
+      "title": "Laptop Keyboard",
+      "name": "Shivam",
+      "category": "Hardware",
+      "description": "for work, needs to replace immediately"
+    },
+    {
+      "id": 7,
+      "title": "Speakers",
+      "name": "Rajat",
+      "category": "Mobile",
+      "description": "wanted good speakes"
+    }
+  ]
+}
