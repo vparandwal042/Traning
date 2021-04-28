@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript</title>
+    <link rel="stylesheet" href="MyCalculator.css">
+    <script src="MyCalculator.js"></script>
+</head>
+<body>
+    <div class="calc">
+        <h1>Assignment4</h1>
+        <h2>My Calculator</h2>
+        <ul class="radiobtn">
+            <li>
+                <input type="radio" id="add" onclick="inputs()" name="Input" value="Add" required>
+                <label for="add">Add</label>
+            </li>
+            <li>
+                <input type="radio" id="subtract" onclick="inputs()" name="Input" value="Subtract" required>
+                <label for="subtract">Subtract</label>
+            </li>
+            <li>
+                <input type="radio" id="multiply" onclick="inputs()" name="Input" value="Multiply" required>
+                <label for="multiply">Multiply</label>
+            </li>
+            <li>
+                <input type="radio" id="divide" onclick="inputs()" name="Input" value="Divide" required>
+                <label for="divide">Divide</label>
+            </li>
+            <li>
+                <input type="radio" id="exponent" onclick="inputs()" name="Input" value="Exponent" required>
+                <label for="exponent">Exponent</label>
+            </li>
+            <li>
+                <input type="radio" id="mean" onclick="inputm()" name="Input" value="Mean" required>
+                <label for="mean">Mean</label>
+            </li>
+            <li>
+                <input type="radio" id="quit" onclick="quit()" name="Input" value="Quit" required>
+                <label for="quit">Quit</label>
+            </li>
+        </ul> <br>
+        <div id="input1"></div>
+        <div id="input2"></div>
+    </div>
+    <p id="resultBox"></p>
+    <div class="resultBox">
+        <input type="submit" onclick="Assign4()" id="runCalculator" value="Run Calculator">
+    </div>
+</body>
+</html>

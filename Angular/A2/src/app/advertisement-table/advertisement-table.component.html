@@ -1,0 +1,26 @@
+<div class="mt-5 mb-2" style="width: 20%;">
+    <input type="text" class="form-control" placeholder="Search" [(ngModel)]="query" id="listSearch">
+</div>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Name</th>
+        <th scope="col">Category</th>
+        <th scope="col">Description</th>
+        <th scope="col">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor = "let adv of advList | filter: query">
+        <th scope="row"> {{ adv.title }} </th>
+        <td>{{ adv.name }}</td>
+        <td>{{ adv.category }}</td>
+        <td>{{ adv.description }}</td>
+        <td>
+          <a href="edit-advertisement/{{ adv.id }}" role="button" class="btn btn-success">Edit</a>
+          <a (click) = "delete(adv.id)" role="button" class="btn btn-danger">Delete</a>
+      </td>
+      </tr>
+    </tbody>
+</table>

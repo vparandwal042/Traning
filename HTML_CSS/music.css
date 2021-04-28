@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+html{
+    scroll-behavior: smooth;
+    font-family: 'Open Sans Condensed', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+a{ text-decoration: none; }
+
+li { list-style: none; }
+
+.nav {
+    display: flex;
+    justify-content: flex-start;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #222;
+    box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+    z-index: 10;
+} 
+.nav-list {
+    display: flex;
+}
+.nav-list a {
+    display: block;
+    color: white;
+    font-size: 1.5rem;
+    padding: 15px;
+    transition: 0.3s ease;
+}
+.nav-list a:hover{
+    background-color: lightgray;
+    color: #222;
+}
+
+.header {
+    min-height: 100vh;
+	background-image: url('img-music/music.jpg');
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+.header::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.6;
+	z-index: -1;
+}
+.music-center{
+    width: 100%;
+    height: auto;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+.music-center h1{
+    font-size: 5rem;
+    color: white;
+}
+.music-center span{
+    font-size: 1.2rem;
+    color: white;
+}
+.music-center p{
+    font-size: 2rem;
+    color: white;
+}
+.tagline{
+    margin-left: 150px;
+    margin-right: 150px;
+}
+
+.music{
+    min-height: 225vh;
+    background-color: #222;
+	position: relative;
+    text-align: center;
+}
+.music-content{
+    width: 100%;
+    height: auto;
+    font-weight: bold;
+    position: absolute;
+    color: white;
+    letter-spacing: 1.5px;
+}
+.music-content h1, i{
+    font-size: 3rem;
+    margin-top: 50px;
+    display: inline-block;
+    padding: 12px;
+}
+.music-content p{
+    font-size: 2rem;
+}
+.music-btn a {
+    border-radius: 5px;
+    padding: 20px 10px;
+    outline: none;
+    color: #ffffff;
+    background-color: crimson;
+    font-size: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    text-align: center;
+    transition: .3s ease;
+}
+
+.world{
+    min-height: 85vh;
+	background-image: url('img-music/music2.jpg');
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+    text-align: center;
+}
+.world h2{
+    font-size: 2.5rem;
+    color: white;
+    padding-top: 200px;
+}
+.world p{
+    font-size: 1.3rem;
+    color: white;
+    padding-top: 50px;
+}
+
+footer{
+    background-color: #222;
+    text-align: center;
+    padding: 25px 0;
+    color: white;
+}

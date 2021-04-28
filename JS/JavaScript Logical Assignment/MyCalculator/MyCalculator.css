@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:wght@300&display=swap');
+
+html{
+  scroll-behavior: smooth;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+}
+
+.calc{
+  padding: 16px;
+  width: 98%;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 36px;
+  text-align: center;
+}
+
+.radiobtn {
+  list-style-type: none;
+  margin-top: 50px;
+  margin-left: 280px;
+  padding: 0;
+}
+.radiobtn li {
+  float: left;
+  margin: 0 10px 0 0;
+  width: 100px;
+  height: 40px;
+  position: relative;
+}
+.radiobtn label, .radiobtn input {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+} 
+.radiobtn input[type="radio"] {
+  opacity: 0.01;
+  z-index: 100;
+}
+.radiobtn input[type="radio"]:checked+label, .Checked+label {
+  background: #5cb85c;
+  color: white;
+}
+.radiobtn label {
+  padding: 2px;
+  border: 1px solid white;
+  color: teal;
+  cursor: pointer;
+  transition: 0.3s ease;
+  z-index: 90;
+}
+.radiobtn label:hover {
+  background: teal;
+  color: white;
+}
+
+input[type="text"] {
+  padding: 12px;
+  width: 210px;
+  margin-top: 20px;
+}
+#input1 {
+  margin-right: 300px;
+}
+#input2 {
+  margin-left: -252px;
+}
+::placeholder {
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+input[type="submit"] {
+  padding: 12px;
+  font-family: 'Open Sans Condensed', sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.resultBox{
+  text-align: center;
+}
+input[type='submit'] {
+  color: white;
+  border: 1px solid #ddd;
+  background-color: teal;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+input[type='submit']:hover {
+  background-color: white;
+  color: teal;
+}
+#resultBox {
+  text-align: center;
+  color: #222;
+}

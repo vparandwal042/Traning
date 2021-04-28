@@ -1,0 +1,13 @@
+.tables #five table{
+    border: 1px solid black;
+}
+.tables #five th{
+    border: 1px solid black;
+}
+.tables #five td{
+    border: 1px solid black;
+}
+
+.tables #five{
+    border-collapse: collapse;
+}

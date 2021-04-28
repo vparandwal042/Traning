@@ -1,0 +1,15 @@
+.three{
+    background-color: aquamarine;
+}
+
+.three :nth-child(1){
+    text-transform: uppercase;
+}
+
+.three :nth-child(2){
+    text-transform: lowercase;
+}
+
+.three :nth-child(3){
+    text-transform: capitalize;
+}

@@ -1,0 +1,1033 @@
+> use mongo_practice;
+switched to db mongo_practice
+> db.createCollection("moives")
+{ "ok" : 1 }
+> show collections
+moives
+> db.movies.insert({ title: "Fight Club", writer: "Chuck Palahniuko", year: 1999, actors: ['Brad Pitt', 'Edward'] })
+WriteResult({ "nInserted" : 1 })
+> db.movies.insertMany( [ { title: "Pulp Fiction", writer: "Quentin Tarantino", year: 1994, actors: ["John Travolta", "Uma Thurman"] }, { title: "Inglorious Bastereds", writer: "Quentin Tarantino", year: 2009, actors: ["Brad Pitt", "Diane Krugar", "Eli Roth"] }, { title: "The Hobbit: An Unexpected Journey", writer: "J.R.R. Tolkein", year: 2012, franchise: "The Hobbit" }, { title: "The Hobbit: The Battle of Five Armies", writer: "J.R.R. Tolkein", year: 2012, franchise: "The Hobbit", synopsis: "XYZ..." }, { title: "Pulp Fiction", writer: "Quentin Tarantino", year: 1994, franchise: "The Hobbit" }, { title: "Pee Wee Hirman's Big Adventure" }, { title: "Avatar" } ] )
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("6050fd48a966afcbee366b0a"),
+                ObjectId("6050fd48a966afcbee366b0b"),
+                ObjectId("6050fd48a966afcbee366b0c"),
+                ObjectId("6050fd48a966afcbee366b0d"),
+                ObjectId("6050fd48a966afcbee366b0e"),
+                ObjectId("6050fd48a966afcbee366b0f"),
+                ObjectId("6050fd48a966afcbee366b10")
+        ]
+}
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.find({writer: "Quentin Tarantino"}).pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+> db.movies.find({actors: "Brad Pitt"}).pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+> db.movies.find({franchise: "The Hobbit"}).pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+> db.movies.find( {year:{$lt:2000}} ).pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+> db.mycol.find({$or:[{ year:{$lt:2000} },{ year:{$gt:2000} }]}).pretty()
+> db.movies.find({$or:[{ year:{$lt:2000} },{ year:{$gt:2000} }]}).pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+> db.movies.update({title: "The Hobbit: Unexpected Journey"},{$set: {synopsis:"ABC.."}},true)
+WriteResult({
+        "nMatched" : 0,
+        "nUpserted" : 1,
+        "nModified" : 0,
+        "_id" : ObjectId("60510546161068dc03f0f8c7")
+})
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+{
+        "_id" : ObjectId("60510546161068dc03f0f8c7"),
+        "title" : "The Hobbit: Unexpected Journey",
+        "synopsis" : "ABC.."
+}
+> db.movies.update({},{$set: {synopsis:"ABC.."}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd42a966afcbee366b09"),
+        "title" : "Fight Club",
+        "writer" : "Chuck Palahniuko",
+        "year" : 1999,
+        "actors" : [
+                "Brad Pitt",
+                "Edward"
+        ],
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+{
+        "_id" : ObjectId("60510546161068dc03f0f8c7"),
+        "title" : "The Hobbit: Unexpected Journey",
+        "synopsis" : "ABC.."
+}
+> db.movies.remove({synopsis:"ABC.."},1)
+WriteResult({ "nRemoved" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+{
+        "_id" : ObjectId("60510546161068dc03f0f8c7"),
+        "title" : "The Hobbit: Unexpected Journey",
+        "synopsis" : "ABC.."
+}
+> db.movies.remove({synopsis:"ABC.."})
+WriteResult({ "nRemoved" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.foo.update({"_id" :ObjectId("6050fd48a966afcbee366b0c") },{$set : {synopsis: "ABC.."}})
+WriteResult({ "nMatched" : 0, "nUpserted" : 0, "nModified" : 0 })
+> db.movies.update({"_id" :ObjectId("6050fd48a966afcbee366b0c") },{$set : {synopsis: "ABC.."}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.update({"_id" :ObjectId("") },{$set : {synopsis: "PQR.."}})^C
+> db.movies.update({"_id" :ObjectId("6050fd48a966afcbee366b0e") },{$set : {synopsis: "ABC.."}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.update({"_id" :ObjectId("6050fd48a966afcbee366b0e") },{$set : {synopsis: "PQR.."}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit",
+        "synopsis" : "PQR.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.update({"_id" :ObjectId("6050fd48a966afcbee366b0a") },{$set : {actor: "Samuel L. Jackson"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : [
+                "John Travolta",
+                "Uma Thurman"
+        ],
+        "actor" : "Samuel L. Jackson"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit",
+        "synopsis" : "PQR.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.update({"_id" :ObjectId("6050fd48a966afcbee366b0a") },{$set : {actors: "Samuel L. Jackson"}})
+WriteResult({ "nMatched" : 1, "nUpserted" : 0, "nModified" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : "Samuel L. Jackson",
+        "actor" : "Samuel L. Jackson"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit",
+        "synopsis" : "PQR.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0f"),
+        "title" : "Pee Wee Hirman's Big Adventure"
+}
+{ "_id" : ObjectId("6050fd48a966afcbee366b10"), "title" : "Avatar" }
+> db.movies.createIndex({synopsis:"text"})
+{
+        "ok" : 0,
+        "errmsg" : "Index: { v: 2, key: { _fts: \"text\", _ftsx: 1 }, name: \"synopsis_text\", weights: { synopsis: 1 }, default_language: \"english\", language_override: \"language\", textIndexVersion: 3 } already exists with different options: { v: 2, key: { _fts: \"text\", _ftsx: 1 }, name: \"movies_text_text\", weights: { movies_text: 1 }, default_language: \"english\", language_override: \"language\", textIndexVersion: 3 }",
+        "code" : 85,
+        "codeName" : "IndexOptionsConflict"
+}
+> db.movies.find({$text:{$search:"ABC.."}}).pretty()
+> db.movies.remove({title: "Avatar})
+uncaught exception: SyntaxError: "" literal not terminated before end of script :
+@(shell):1:34
+> db.movies.remove({title: "Avatar"})
+WriteResult({ "nRemoved" : 1 })
+> db.movies.remove({title: "Pee Wee Herman's Big Adventure"})
+WriteResult({ "nRemoved" : 0 })
+> db.movies.remove({title: "Pee Wee Hirman's Big Adventure"})
+WriteResult({ "nRemoved" : 1 })
+> db.movies.find().pretty()
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0a"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "actors" : "Samuel L. Jackson",
+        "actor" : "Samuel L. Jackson"
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0b"),
+        "title" : "Inglorious Bastereds",
+        "writer" : "Quentin Tarantino",
+        "year" : 2009,
+        "actors" : [
+                "Brad Pitt",
+                "Diane Krugar",
+                "Eli Roth"
+        ]
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0c"),
+        "title" : "The Hobbit: An Unexpected Journey",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "ABC.."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0d"),
+        "title" : "The Hobbit: The Battle of Five Armies",
+        "writer" : "J.R.R. Tolkein",
+        "year" : 2012,
+        "franchise" : "The Hobbit",
+        "synopsis" : "XYZ..."
+}
+{
+        "_id" : ObjectId("6050fd48a966afcbee366b0e"),
+        "title" : "Pulp Fiction",
+        "writer" : "Quentin Tarantino",
+        "year" : 1994,
+        "franchise" : "The Hobbit",
+        "synopsis" : "PQR.."
+}
+> db.createCollection("users", { capped : true, autoIndexID : true, size : 6142800, max : 10000 } )
+{
+        "ok" : 0,
+        "errmsg" : "BSON field 'create.autoIndexID' is an unknown field.",
+        "code" : 40415,
+        "codeName" : "Location40415"
+}
+> db.createCollection("users")
+{ "ok" : 1 }
+> db.movies.insert({ username: "GoodGuyGrey", first_name: "Good Guy", last_name:Grey })
+uncaught exception: ReferenceError: Grey is not defined :
+@(shell):1:69
+> db.users.insert({ username: "GoodGuyGrey", first_name: "Good Guy", last_name: "Grey" })
+WriteResult({ "nInserted" : 1 })
+> db.users.insert({ username: "GoodGuyGrey", fullname: {first: "Scumbag", last: "Steve" } })
+WriteResult({ "nInserted" : 1 })
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("60510bcfc9a773cea45c4354"),
+        "username" : "GoodGuyGrey",
+        "first_name" : "Good Guy",
+        "last_name" : "Grey"
+}
+{
+        "_id" : ObjectId("60510bfec9a773cea45c4355"),
+        "username" : "GoodGuyGrey",
+        "fullname" : {
+                "first" : "Scumbag",
+                "last" : "Steve"
+        }
+}
+> db.createCollection("posts")
+{ "ok" : 1 }
+> db.posts.insertMany([ {username: "GoodGuyGrey", title: "Passes", body: "Wakes"}, {username: "GoodGuyGrey", title: "Steals", body: "Raises"}, {username: "GoodGuyGrey", title: "Reports", body: "Sends"}, {username: "ScumBagSteve", title: "Borrows Something", body: "Sells"}, {username: "ScumBagSteve", title: "Borrows Everthing", body: "The End"}, {username: "ScumBagSteve", title: "Forks", body: "Sets"} ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60510d68c9a773cea45c4356"),
+                ObjectId("60510d68c9a773cea45c4357"),
+                ObjectId("60510d68c9a773cea45c4358"),
+                ObjectId("60510d68c9a773cea45c4359"),
+                ObjectId("60510d68c9a773cea45c435a"),
+                ObjectId("60510d68c9a773cea45c435b")
+        ]
+}
+> db.createCollection("comments")
+{ "ok" : 1 }
+> db.comments.insertMany([ {username: "GoodGuyGrey", comment:"Hope", post:60510d68c9a773cea45c4359}, {username: "GoodGuyGrey", comment:"What's Mine", post:60510d68c9a773cea45c435a}, {username: "GoodGuyGrey", comment:"Don't Violet", post: 60510d68c9a773cea45c435b}, {username: "ScumBagSteve", comment:"It's Still", post: 60510d68c9a773cea45c4356}, {username: "ScumBagSteve", comment:"Denied", post: 60510d68c9a773cea45c4358} ])
+uncaught exception: SyntaxError: identifier starts immediately after numeric literal :
+@(shell):1:72
+> db.comments.insertMany([ {username: "GoodGuyGrey", comment:"Hope", post: ObjectId("60510d68c9a773cea45c4359")}, {username: "GoodGuyGrey", comment:"What's Mine", post: ObjectId("60510d68c9a773cea45c435a")}, {username: "GoodGuyGrey", comment:"Don't Violet", post: ObjectId("60510d68c9a773cea45c435b")}, {username: "ScumBagSteve", comment:"It's Still", post: ObjectId("60510d68c9a773cea45c4356")}, {username: "ScumBagSteve", comment:"Denied", post: ObjectId("60510d68c9a773cea45c4358")} ])
+{
+        "acknowledged" : true,
+        "insertedIds" : [
+                ObjectId("60511115c9a773cea45c435c"),
+                ObjectId("60511115c9a773cea45c435d"),
+                ObjectId("60511115c9a773cea45c435e"),
+                ObjectId("60511115c9a773cea45c435f"),
+                ObjectId("60511115c9a773cea45c4360")
+        ]
+}
+> db.users.find().pretty()
+{
+        "_id" : ObjectId("60510bcfc9a773cea45c4354"),
+        "username" : "GoodGuyGrey",
+        "first_name" : "Good Guy",
+        "last_name" : "Grey"
+}
+{
+        "_id" : ObjectId("60510bfec9a773cea45c4355"),
+        "username" : "GoodGuyGrey",
+        "fullname" : {
+                "first" : "Scumbag",
+                "last" : "Steve"
+        }
+}
+> db.posts.find().pretty()
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4356"),
+        "username" : "GoodGuyGrey",
+        "title" : "Passes",
+        "body" : "Wakes"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4357"),
+        "username" : "GoodGuyGrey",
+        "title" : "Steals",
+        "body" : "Raises"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4358"),
+        "username" : "GoodGuyGrey",
+        "title" : "Reports",
+        "body" : "Sends"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4359"),
+        "username" : "ScumBagSteve",
+        "title" : "Borrows Something",
+        "body" : "Sells"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c435a"),
+        "username" : "ScumBagSteve",
+        "title" : "Borrows Everthing",
+        "body" : "The End"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c435b"),
+        "username" : "ScumBagSteve",
+        "title" : "Forks",
+        "body" : "Sets"
+}
+> db.posts.find(username: "GoodGuyGrey").pretty()
+uncaught exception: SyntaxError: missing ) after argument list :
+@(shell):1:22
+> db.posts.find({username: "GoodGuyGrey"}).pretty()
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4356"),
+        "username" : "GoodGuyGrey",
+        "title" : "Passes",
+        "body" : "Wakes"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4357"),
+        "username" : "GoodGuyGrey",
+        "title" : "Steals",
+        "body" : "Raises"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4358"),
+        "username" : "GoodGuyGrey",
+        "title" : "Reports",
+        "body" : "Sends"
+}
+> db.posts.find({username: "ScumBagSteve"}).pretty()
+{
+        "_id" : ObjectId("60510d68c9a773cea45c4359"),
+        "username" : "ScumBagSteve",
+        "title" : "Borrows Something",
+        "body" : "Sells"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c435a"),
+        "username" : "ScumBagSteve",
+        "title" : "Borrows Everthing",
+        "body" : "The End"
+}
+{
+        "_id" : ObjectId("60510d68c9a773cea45c435b"),
+        "username" : "ScumBagSteve",
+        "title" : "Forks",
+        "body" : "Sets"
+}
+> db.comments.find().pretty()
+{
+        "_id" : ObjectId("60511115c9a773cea45c435c"),
+        "username" : "GoodGuyGrey",
+        "comment" : "Hope",
+        "post" : ObjectId("60510d68c9a773cea45c4359")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c435d"),
+        "username" : "GoodGuyGrey",
+        "comment" : "What's Mine",
+        "post" : ObjectId("60510d68c9a773cea45c435a")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c435e"),
+        "username" : "GoodGuyGrey",
+        "comment" : "Don't Violet",
+        "post" : ObjectId("60510d68c9a773cea45c435b")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c435f"),
+        "username" : "ScumBagSteve",
+        "comment" : "It's Still",
+        "post" : ObjectId("60510d68c9a773cea45c4356")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c4360"),
+        "username" : "ScumBagSteve",
+        "comment" : "Denied",
+        "post" : ObjectId("60510d68c9a773cea45c4358")
+}
+> db.comments.find({username: "ScumBagSteve"}).pretty()
+{
+        "_id" : ObjectId("60511115c9a773cea45c435f"),
+        "username" : "ScumBagSteve",
+        "comment" : "It's Still",
+        "post" : ObjectId("60510d68c9a773cea45c4356")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c4360"),
+        "username" : "ScumBagSteve",
+        "comment" : "Denied",
+        "post" : ObjectId("60510d68c9a773cea45c4358")
+}
+> db.comments.find({username: "GoodGuyGrey"}).pretty()
+{
+        "_id" : ObjectId("60511115c9a773cea45c435c"),
+        "username" : "GoodGuyGrey",
+        "comment" : "Hope",
+        "post" : ObjectId("60510d68c9a773cea45c4359")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c435d"),
+        "username" : "GoodGuyGrey",
+        "comment" : "What's Mine",
+        "post" : ObjectId("60510d68c9a773cea45c435a")
+}
+{
+        "_id" : ObjectId("60511115c9a773cea45c435e"),
+        "username" : "GoodGuyGrey",
+        "comment" : "Don't Violet",
+        "post" : ObjectId("60510d68c9a773cea45c435b")
+}
+> db.comments.find({post: ObjectId("60510d68c9a773cea45c4358")}).pretty()
+{
+        "_id" : ObjectId("60511115c9a773cea45c4360"),
+        "username" : "ScumBagSteve",
+        "comment" : "Denied",
+        "post" : ObjectId("60510d68c9a773cea45c4358")
+}

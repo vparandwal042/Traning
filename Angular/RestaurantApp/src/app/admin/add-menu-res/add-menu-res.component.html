@@ -1,0 +1,22 @@
+<div class="row">
+    <table class="table table-bordered">
+          <thead>
+            <tr>
+              <th scope="col">Restaurant Name</th>
+              <th scope="col">Email</th>
+              <th scope="col">Address</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody *ngFor = "let res of resList">
+            <tr>
+              <th scope="row"> {{ res.resName }} </th>
+              <td>{{ res.email }}</td>
+              <td>{{ res.address }}</td>
+              <td>
+                  <a (click) = "addMenuRes(res)" role="button" class="btn btn-success">Select</a>
+              </td>
+            </tr>
+          </tbody>
+      </table>    
+  </div>

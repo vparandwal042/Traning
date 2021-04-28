@@ -1,0 +1,119 @@
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+html{
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+a{ text-decoration: none; }
+
+.header {
+    min-height: 100vh;
+	background-image: url('img-photo/photo.jpg');
+	background-size: cover;
+	background-position: top center;
+	position: relative;
+	z-index: 1;
+}
+.header::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	height: 100%;
+	width: 100%;
+	background-color: black;
+	opacity: 0.6;
+	z-index: -1;
+}
+.center{
+    width: 100%;
+    height: auto;
+    font-weight: bold;
+    position: absolute;
+    text-align: center;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+    -webkit-transform: translate(-50%,-50%);
+}
+.center h1{
+    font-size: 6rem;
+    color: whitesmoke;
+}
+.center span{
+    font-size: 2rem;
+    color: whitesmoke;
+    font-family: 'Dancing Script', cursive;
+}
+.center a {
+    border: 1px solid #ffffff;
+    border-radius: 5px;
+    margin: 0 5px;
+    padding: 15px 35px;
+    outline: none;
+    color: #ffffff;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.4;
+    text-align: center;
+    transition: .3s ease;
+	transition-property: background-color, color;
+}
+.center a:hover {
+    color: rgba(0, 0, 0, 0.850);
+    background: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.3);
+}
+
+.work{
+    margin: 30px 50px 50px 50px;
+    text-align: center;
+}
+.work h1{
+    font-size: 3rem;
+}
+hr{
+    width: 28%;
+    margin-left: 450px;
+}
+.work .column {
+    float: left;
+    width: 50%;
+    margin-top: 50px;
+    padding: 5px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+.work .column:hover{
+    box-shadow: 0 0 10px 0 #222;
+}
+.work .row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+.info{
+    color: white;
+    background-color: palevioletred;
+    margin-top: -6px;
+}
+
+.contact-details{
+    text-align: center;
+    background-color: lightgrey;
+    margin-top: 50px;
+    padding: 50px;
+}
+.contact-details h2{
+    font-size: 3rem;
+    margin-bottom: 25px;
+}
+.contact-details p{
+    line-height: 2rem;
+}

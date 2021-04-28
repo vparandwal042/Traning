@@ -1,0 +1,18 @@
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Food Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sizes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuList">
+            <th scope="row"> {{ menu.foodName }} </th>
+            <td>{{ menu.qty }}</td>
+            <td>{{ menu.sizes }}</td>
+          </tr>
+        </tbody>
+    </table>    
+</div>

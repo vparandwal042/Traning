@@ -1,0 +1,28 @@
+<div class="row">
+  <div style="margin-left: 880px;">
+    <a href="admin/restaurant/restaurant-add/" role="button" class="btn btn-primary">Add Restaurant</a>
+  </div>
+  <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Restaurant Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody *ngFor = "let res of resList">
+          <tr>
+            <th scope="row"> {{ res.resName }} </th>
+            <td>{{ res.email }}</td>
+            <td>{{ res.address }}</td>
+            <td>
+                <a href="admin/restaurant/menu-by-id/{{ res.id }}" role="button" class="btn btn-primary">Click Here for Menu</a>
+                <a href="admin/restaurant/restaurant-edit/{{ res.id }}" role="button" class="btn btn-success"><i class="fas fa-edit"></i></a>
+                <a href="admin/restaurant/restaurant-delete/{{ res.id }}" role="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></a>
+            </td>
+          </tr>
+        </tbody>
+    </table>    
+</div>
+<router-outlet></router-outlet>

@@ -1,0 +1,23 @@
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">Food Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Sizes</th>
+            <th scope="col">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor = "let menu of menuList">
+            <th scope="row"> {{ menu.foodName }} </th>
+            <td>{{ menu.qty }}</td>
+            <td>{{ menu.sizes }}</td>
+            <td>
+                <a href="user/user-menu/{{menu.resId}}/place-order/{{ menu.id }}" role="button" class="btn btn-success">Select</a>
+            </td>
+          </tr>
+        </tbody>
+    </table>    
+</div>
+<router-outlet></router-outlet>

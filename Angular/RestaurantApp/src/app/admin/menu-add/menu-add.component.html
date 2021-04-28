@@ -1,0 +1,17 @@
+<form (submit) = "addNewMenu(addMenu)" #addMenu = "ngForm">
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="inputEmail4">Food Name</label>
+        <input type="text" class="form-control" id="inputEmail4" placeholder="Food Name" name="foodName" ngModel>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="inputPassword4">Quantity</label>
+        <input type="email" class="form-control" id="inputPassword4" placeholder="Quantity" name="qty" ngModel>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="inputAddress">Sizes</label>
+      <input type="text" class="form-control" id="inputAddress" placeholder="Sizes" name="sizes" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary">Add Menu</button>
+</form>

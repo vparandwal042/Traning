@@ -1,0 +1,153 @@
+{
+  "restaurants": [
+    {
+      "id": 42,
+      "resName": "KFC-new",
+      "email": "kfc-new@ds.s",
+      "address": "California, USA"
+    },
+    {
+      "id": 32,
+      "resName": "Sukanta",
+      "email": "sukanta@wws.s",
+      "address": "Deccan, Pune"
+    }
+  ],
+  "menu": [
+    {
+      "id": 22,
+      "foodName": "Burger",
+      "qty": 20,
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 42
+    },
+    {
+      "id": 44,
+      "foodName": "Hamburger",
+      "qty": 20,
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 32
+    },
+    {
+      "id": 96,
+      "foodName": "Rice",
+      "qty": 20,
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 42
+    },
+    {
+      "id": 74,
+      "foodName": "Coke",
+      "qty": 20,
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 32
+    },
+    {
+      "id": 15,
+      "foodName": "Thali",
+      "qty": 20,
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 32
+    },
+    {
+      "id": 72,
+      "foodName": "Paav bhaji",
+      "qty": "40",
+      "sizes": "large, small",
+      "resId": 32
+    }
+  ],
+  "place-order": [
+    {
+      "id": 44,
+      "foodName": "Hamburger",
+      "qty": "2",
+      "sizes": "small",
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "kfc-new@ds.s",
+      "address": "California, USA"
+    },
+    {
+      "id": 82,
+      "foodName": "Hamburger",
+      "qty": "4",
+      "sizes": "large",
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "v@ds.ss",
+      "address": "OFDR, Dehuroad"
+    },
+    {
+      "id": 120,
+      "foodName": "Hamburger",
+      "qty": "4",
+      "sizes": "small",
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "v@ds.ss",
+      "address": "Deccan, Pune"
+    },
+    {
+      "id": 93,
+      "foodName": "Hamburger",
+      "qty": "50",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "v@ds.ss",
+      "address": "OFDR, Dehuroad"
+    },
+    {
+      "id": 61,
+      "foodName": "Burger",
+      "qty": "1",
+      "sizes": "small",
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "priyanka@ss.s",
+      "address": "AhNagar, MH"
+    },
+    {
+      "id": 175,
+      "foodName": "Rice",
+      "qty": "1",
+      "sizes": "small",
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "v@ds.ss",
+      "address": "OFDR, Dehuroad"
+    },
+    {
+      "id": 196,
+      "foodName": "Rice",
+      "qty": "",
+      "sizes": [
+        "small",
+        "large"
+      ],
+      "resId": 42,
+      "resName": "KFC-new",
+      "email": "",
+      "address": ""
+    }
+  ]
+}
